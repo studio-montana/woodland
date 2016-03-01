@@ -21,7 +21,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<title><?php esc_attr(wp_title(' | ', true, 'right')); ?></title>
-	<link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/favicon.ico" />
+	<?php if(function_exists("woodkit_favicon_has") && woodkit_favicon_has()){ ?><link rel="icon" type="image/png" href="<?php echo woodkit_favicon_get_url(); ?>" /><!--[if IE]><link rel="shortcut icon" type="image/png" href="<?php echo woodkit_favicon_get_url(); ?>" /><![endif]--><?php } ?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 	<!--[if lt IE 9]>

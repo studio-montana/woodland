@@ -1,10 +1,14 @@
 <?php
 /**
- * @package WordPress
- * @subpackage Woodland
- * @version 2.0
- * @author Sébastien Chandonay www.seb-c.com / Cyril Tissot www.cyriltissot.com
- * This file, like this theme, like WordPress, is licensed under the GPL.
+ Theme Name: Woodland
+ Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author URI: http://www.studio-montana.com
+ License: GNU General Public License v2 or later
+ License URI: http://www.gnu.org/licenses/gpl-2.0.html
+
+ This theme, like WordPress, is licensed under the GPL.
+ Use it to make something cool, have fun, and share what you've learned with others.
  */
 
 get_header();?>

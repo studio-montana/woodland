@@ -19,7 +19,7 @@ get_header();?>
 		<?php if ( have_posts() ) : ?>
 
 			<header class="page-header">
-				<h1 class="page-title"><i class="icon-search"></i><?php printf( __("'%s' results", WOODLAND_TEXT_DOMAIN), get_search_query() ); ?></h1>
+				<h1 class="page-title"><i class="icon-search"></i><?php printf( __("'%s' results", 'woodland'), get_search_query() ); ?></h1>
 			</header>
 
 			<?php /* The loop */ ?>
@@ -29,9 +29,9 @@ get_header();?>
 
 			<?php // Previous/next page navigation.
 			the_posts_pagination( array(
-					'prev_text'          => __( 'Previous page', WOODLAND_TEXT_DOMAIN),
-					'next_text'          => __( 'Next page', WOODLAND_TEXT_DOMAIN),
-					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', WOODLAND_TEXT_DOMAIN) . ' </span>',
+					'prev_text'          => __( 'Previous page', 'woodland'),
+					'next_text'          => __( 'Next page', 'woodland'),
+					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'woodland') . ' </span>',
 				)); ?>
 
 		<?php else : ?>

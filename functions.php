@@ -15,7 +15,6 @@
  * Constantes
  */
 define('WOODLAND_THEME_NAME', 'woodland');
-define('WOODLAND_TEXT_DOMAIN', 'woodland');
 
 define('WOODLAND_CSS_FOLDER', 'css/');
 define('WOODLAND_JS_FOLDER', 'js/');
@@ -35,7 +34,7 @@ function woodland_setup() {
 	/*
 	 * Makes Woodland available for translation.
 	*/
-	load_theme_textdomain(WOODLAND_TEXT_DOMAIN, get_template_directory() . '/'.WOODLAND_LANG_FOLDER);
+	load_theme_textdomain('woodland', get_template_directory() . '/'.WOODLAND_LANG_FOLDER);
 
 	/*
 	 * Adds RSS feed links to <head> for posts and comments.
@@ -60,7 +59,7 @@ function woodland_setup() {
 	/*
 	 * This theme uses wp_nav_menu() in one location.
 	*/
-	register_nav_menu('primary', __('Main menu', WOODLAND_TEXT_DOMAIN) );
+	register_nav_menu('primary', __('Main menu', 'woodland') );
 
 	/*
 	 * This theme uses a woodland image size for featured images, displayed on "standard" posts and pages.
@@ -157,9 +156,9 @@ add_action('admin_init', 'woodland_admin_init');
 */
 function woodland_widgets_init() {
 	register_sidebar( array(
-	'name'          => __('Sidebar', WOODLAND_TEXT_DOMAIN),
+	'name'          => __('Sidebar', 'woodland'),
 	'id'            => 'sidebar',
-	'description'   => __('Shown in your site', WOODLAND_TEXT_DOMAIN),
+	'description'   => __('Shown in your site', 'woodland'),
 	'before_widget' => '<aside id="%1$s" class="widget %2$s"><div class="widget-container">',
 	'before_title'  => '<h3 class="widget-title">',
 	'after_title'   => '</h3>',
@@ -211,19 +210,19 @@ if (!function_exists('woodland_entry_meta') ) :
 */
 function woodland_entry_meta() {
 	if (is_sticky() && is_home() && ! is_paged())
-		echo '<span class="featured-post">' . __('Sticky', WOODLAND_TEXT_DOMAIN) . '</span>';
+		echo '<span class="featured-post">' . __('Sticky', 'woodland') . '</span>';
 
 	if (!has_post_format('link') && 'post' == get_post_type() )
 		woodland_entry_date();
 
 	// Translators: used between list items, there is a space after the comma.
-	$categories_list = get_the_category_list( __(', ', WOODLAND_TEXT_DOMAIN));
+	$categories_list = get_the_category_list( __(', ', 'woodland'));
 	if ( $categories_list ) {
 		echo '<span class="categories-links">' . $categories_list . '</span>';
 	}
 
 	// Translators: used between list items, there is a space after the comma.
-	$tag_list = get_the_tag_list('', __(', ', WOODLAND_TEXT_DOMAIN) );
+	$tag_list = get_the_tag_list('', __(', ', 'woodland') );
 	if ( $tag_list ) {
 		echo '<span class="tags-links">' . $tag_list . '</span>';
 	}
@@ -232,7 +231,7 @@ function woodland_entry_meta() {
 	if ('post' == get_post_type() ) {
 		printf('<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 		esc_url( get_author_posts_url( get_the_author_meta('ID') ) ),
-		esc_attr( sprintf( __('View all posts by %s', WOODLAND_TEXT_DOMAIN), get_the_author() ) ),
+		esc_attr( sprintf( __('View all posts by %s', 'woodland'), get_the_author() ) ),
 		get_the_author()
 		);
 	}
@@ -248,13 +247,13 @@ if (!function_exists('woodland_entry_date')) :
 */
 function woodland_entry_date($echo = true) {
 	if (has_post_format( array('chat', 'status')))
-		$format_prefix = _x('%1$s on %2$s', '1: post format name. 2: date', WOODLAND_TEXT_DOMAIN);
+		$format_prefix = _x('%1$s on %2$s', '1: post format name. 2: date', 'woodland');
 	else
 		$format_prefix = '%2$s';
 
 	$date = sprintf('<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 			esc_url( get_permalink() ),
-			esc_attr( sprintf( __('Permalink to %s', WOODLAND_TEXT_DOMAIN), the_title_attribute('echo=0') ) ),
+			esc_attr( sprintf( __('Permalink to %s', 'woodland'), the_title_attribute('echo=0') ) ),
 			esc_attr( get_the_date('c') ),
 			esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) )
 	);

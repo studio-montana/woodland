@@ -20,13 +20,13 @@ get_header();?>
 			<header class="archive-header">
 				<h1 class="archive-title"><i class="icon-book"></i><?php
 					if ( is_day() ) :
-						printf( __('Archives %s', WOODLAND_TEXT_DOMAIN), get_the_date() );
+						printf( __('Archives %s', 'woodland'), get_the_date() );
 					elseif ( is_month() ) :
-						printf( __('Archives %s', WOODLAND_TEXT_DOMAIN), get_the_date( _x('F Y', 'monthly archives date format', WOODLAND_TEXT_DOMAIN) ) );
+						printf( __('Archives %s', 'woodland'), get_the_date( _x('F Y', 'monthly archives date format', 'woodland') ) );
 					elseif ( is_year() ) :
-						printf( __('Archives %s', WOODLAND_TEXT_DOMAIN), get_the_date( _x('Y', 'yearly archives date format', WOODLAND_TEXT_DOMAIN) ) );
+						printf( __('Archives %s', 'woodland'), get_the_date( _x('Y', 'yearly archives date format', 'woodland') ) );
 					else :
-						_e('Archives', WOODLAND_TEXT_DOMAIN);
+						_e('Archives', 'woodland');
 					endif;
 				?></h1>
 			</header><!-- .archive-header -->
@@ -38,9 +38,9 @@ get_header();?>
 			
 			<?php // Previous/next page navigation.
 			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', WOODLAND_TEXT_DOMAIN),
-				'next_text'          => __( 'Next page', WOODLAND_TEXT_DOMAIN),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', WOODLAND_TEXT_DOMAIN) . ' </span>',
+				'prev_text'          => __( 'Previous page', 'woodland'),
+				'next_text'          => __( 'Next page', 'woodland'),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'woodland') . ' </span>',
 				)); ?>
 
 		<?php else : ?>

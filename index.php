@@ -51,9 +51,9 @@ get_header();?>
 			}else{
 				// Previous/next page navigation.
 				the_posts_pagination( array(
-						'prev_text'          => __( 'Previous page', WOODLAND_TEXT_DOMAIN),
-						'next_text'          => __( 'Next page', WOODLAND_TEXT_DOMAIN),
-						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', WOODLAND_TEXT_DOMAIN) . ' </span>',
+						'prev_text'          => __( 'Previous page', 'woodland'),
+						'next_text'          => __( 'Next page', 'woodland'),
+						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'woodland') . ' </span>',
 					));
 			}
 			wp_reset_postdata();

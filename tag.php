@@ -18,7 +18,7 @@ get_header();?>
 
 		<?php if ( have_posts() ) : ?>
 			<header class="archive-header">
-				<h1 class="archive-title"><i class="icon-tag"></i><?php printf( __('Archives: %s', WOODLAND_TEXT_DOMAIN), single_tag_title('', false ) ); ?></h1>
+				<h1 class="archive-title"><i class="icon-tag"></i><?php printf( __('Archives: %s', 'woodland'), single_tag_title('', false ) ); ?></h1>
 
 				<?php if ( tag_description() ) : // Show an optional tag description ?>
 				<div class="archive-meta"><?php echo tag_description(); ?></div>

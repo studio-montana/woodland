@@ -56,7 +56,7 @@
 	<footer class="entry-meta">
 		<?php if (comments_open() && ! is_single()) : ?>
 			<div class="comments-link">
-				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', WOODLAND_TEXT_DOMAIN) . '</span>', __('One comment', WOODLAND_TEXT_DOMAIN), __('See % comments', WOODLAND_TEXT_DOMAIN) ); ?>
+				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', 'woodland') . '</span>', __('One comment', 'woodland'), __('See % comments', 'woodland') ); ?>
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
 	</footer><!-- .entry-meta -->

@@ -22,15 +22,15 @@ get_header(); ?>
 				</header>
 				<div class="entry-content">
 					<p class="causes-title">
-						<?php _e("We couldn't find the page you were looking for. This is either because", WOODLAND_TEXT_DOMAIN); ?>:
+						<?php _e("We couldn't find the page you were looking for. This is either because", 'woodland'); ?>:
 					</p>
 					<ul class="causes">
-						<li><?php _e("There is an error in the URL entered into your web browser. Please check the URL and try again", WOODLAND_TEXT_DOMAIN); ?>.</li>
-						<li><?php _e("The page you are looking for has been moved or deleted", WOODLAND_TEXT_DOMAIN); ?>.</li>
+						<li><?php _e("There is an error in the URL entered into your web browser. Please check the URL and try again", 'woodland'); ?>.</li>
+						<li><?php _e("The page you are looking for has been moved or deleted", 'woodland'); ?>.</li>
 					</ul>
 					<p class="solution">
-						<?php _e("You can return to our homepage by", WOODLAND_TEXT_DOMAIN); ?>&nbsp;<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e("Home", WOODLAND_TEXT_DOMAIN); ?>"><?php _e("clicking here", WOODLAND_TEXT_DOMAIN); ?></a>,&nbsp;
-						<?php _e("or you can try searching for the content you are seeking", WOODLAND_TEXT_DOMAIN); ?>.
+						<?php _e("You can return to our homepage by", 'woodland'); ?>&nbsp;<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e("Home", 'woodland'); ?>"><?php _e("clicking here", 'woodland'); ?></a>,&nbsp;
+						<?php _e("or you can try searching for the content you are seeking", 'woodland'); ?>.
 						<?php get_search_form(); ?>
 					</p>
 				</div>

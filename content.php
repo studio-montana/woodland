@@ -47,18 +47,18 @@
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_content( __('Read more <span class="meta-nav">&rarr;</span>', WOODLAND_TEXT_DOMAIN) ); ?>
+		<?php the_content( __('Read more <span class="meta-nav">&rarr;</span>', 'woodland') ); ?>
 	</div><!-- .entry-content -->
 		
 	<?php if (function_exists("woodkit_pagination")){
 		woodkit_pagination(array(), true, '<div class="pagination">', '</div>', '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'); 
 	}else{ 
 		wp_link_pages( array(
-			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', WOODLAND_TEXT_DOMAIN) . '</span>',
+			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'woodland') . '</span>',
 			'after'       => '</div>',
 			'link_before' => '<span>',
 			'link_after'  => '</span>',
-			'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', WOODLAND_TEXT_DOMAIN) . ' </span>%',
+			'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'woodland') . ' </span>%',
 			'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 	} ?>
@@ -66,7 +66,7 @@
 	<footer class="entry-meta">
 		<?php if (comments_open() && ! is_single()) : ?>
 			<div class="comments-link">
-				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', WOODLAND_TEXT_DOMAIN) . '</span>', __('One comment', WOODLAND_TEXT_DOMAIN), __('See % comments', WOODLAND_TEXT_DOMAIN) ); ?>
+				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', 'woodland') . '</span>', __('One comment', 'woodland'), __('See % comments', 'woodland') ); ?>
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
 

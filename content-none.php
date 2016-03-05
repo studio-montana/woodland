@@ -16,9 +16,9 @@
 		<h1 class="page-title">
 			<?php if (is_search()){ ?>
 				<i class="icon-search"></i>
-				<?php _e('No result', WOODLAND_TEXT_DOMAIN); ?>
+				<?php _e('No result', 'woodland'); ?>
 			<?php }else{ ?>
-				<?php _e('No content', WOODLAND_TEXT_DOMAIN); ?>
+				<?php _e('No content', 'woodland'); ?>
 			<?php } ?>
 		</h1>
 	</header>

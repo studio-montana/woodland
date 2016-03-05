@@ -18,7 +18,7 @@ get_header();?>
 
 		<?php if ( have_posts() ) : ?>
 			<header class="archive-header">
-				<h1 class="archive-title"><i class="icon-tag"></i><?php printf( __('%s Archives', WOODLAND_TEXT_DOMAIN), '<span>' . get_post_format_string( get_post_format() ) . '</span>'); ?></h1>
+				<h1 class="archive-title"><i class="icon-tag"></i><?php printf( __('%s Archives', 'woodland'), '<span>' . get_post_format_string( get_post_format() ) . '</span>'); ?></h1>
 			</header><!-- .archive-header -->
 
 			<?php /* The loop */ ?>

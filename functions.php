@@ -69,19 +69,51 @@ add_action('after_setup_theme', 'woodland_setup');
 */
 function woodland_scripts_styles() {
 
-	wp_enqueue_style('woodland-main-style', get_stylesheet_uri(), array('woodkit-core-slider-style'), '1.0');
+	$main_style_dependecies = array();
+	if (class_exists('Woodkit')) // Woodkit plugin support
+		$main_style_dependecies[] = 'woodkit-core-slider-style';
+	wp_enqueue_style('woodland-main-style', get_stylesheet_uri(), $main_style_dependecies, '1.0');
 
-	wp_enqueue_style('woodland-woodland-style', get_stylesheet_directory_uri().'/css/woodland.css', array('woodland-main-style'), '1.0');
+	wp_enqueue_style('woodland-woodland-style', get_template_directory_uri().'/css/woodland.css', array('woodland-main-style'), '1.0');
 
 	// Loads Internet Explorer specific stylesheet
-	wp_enqueue_style('ie', get_stylesheet_directory_uri().'/css/ie.css', array('style'), '1.0');
+	wp_enqueue_style('ie', get_template_directory_uri().'/css/ie.css', array('style'), '1.0');
 	wp_style_add_data('ie', 'conditional', 'lt IE 9');
 
 	// Loads Functions JavaScript file
-	wp_enqueue_script('script-woodland-functions', get_stylesheet_directory_uri().'/js/functions.js', array('jquery'), '1.0', true);
+	wp_enqueue_script('script-woodland-functions', get_template_directory_uri().'/js/functions.js', array('jquery'), '1.0', true);
+	if (is_multisite()){
+		$home_url = get_site_url(BLOG_ID_CURRENT_SITE);
+		$home_minisite_url = get_site_url(get_current_blog_id());
+	}else{
+		$home_url = home_url('/');
+		$home_minisite_url = "";
+	}
+	$id_blog_page = get_option('page_for_posts');
+	if (!empty($id_blog_page) && is_numeric($id_blog_page)){
+		$blog_url = get_permalink($id_blog_page);
+	}else{
+		$blog_url = "";
+	}
+	if (is_single() && get_post_type() == 'post'){
+		$is_post = "1";
+	}else{
+		$is_post = "0";
+	}
+	$current_url = get_current_url();
+	wp_localize_script('script-woodland-functions', 'Woodland', array(
+	'current_url' => $current_url,
+	'home_url' => $home_url,
+	'home_minisite_url' => $home_minisite_url,
+	'blog_url' => $blog_url,
+	'is_post' => $is_post
+	));
 
 }
-add_action('woodkit_front_enqueue_styles_after', 'woodland_scripts_styles');
+if (class_exists('Woodkit')) // Woodkit plugin support
+	add_action('woodkit_front_enqueue_styles_after', 'woodland_scripts_styles');
+else
+	add_action('wp_enqueue_scripts', 'woodland_scripts_styles');
 
 /**
  * Register widgets areas.
@@ -100,3 +132,101 @@ function woodland_widgets_init() {
 	) );
 }
 add_action('widgets_init', 'woodland_widgets_init');
+
+if (!class_exists('Woodkit') && !function_exists("get_current_url")):
+/**
+ * get the current URL
+*/
+function get_current_url($with_parameters = false){
+	if ($with_parameters){
+		$protocol = get_protocol();
+		return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+	}else{
+		$uri_parts = explode('?', $_SERVER['REQUEST_URI']);
+		$protocol = get_protocol();
+		return $protocol . $_SERVER['HTTP_HOST'] . $uri_parts[0];
+	}
+}
+endif;
+
+if (!class_exists('Woodkit') && !function_exists("get_protocol")):
+/**
+ * get the current Protocol (http || https)
+*/
+function get_protocol(){
+	if (isset($_SERVER['HTTPS']) &&
+			($_SERVER['HTTPS'] == ‘on’ || $_SERVER['HTTPS'] == 1) ||
+			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
+			$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+		$protocol = 'https://';
+	}
+	else {
+		$protocol = 'http://';
+	}
+	return $protocol;
+}
+endif;
+
+if (!function_exists('woodland_entry_meta') ) :
+/**
+ * Woodkit entry-meta
+*
+* @since Woodkit 1.0
+* @return void
+*/
+function woodland_entry_meta() {
+	if (is_sticky() && is_home() && ! is_paged())
+		echo '<span class="featured-post">' . __('Sticky', WOODLAND_TEXT_DOMAIN) . '</span>';
+
+	if (!has_post_format('link') && 'post' == get_post_type() )
+		woodland_entry_date();
+
+	// Translators: used between list items, there is a space after the comma.
+	$categories_list = get_the_category_list( __(', ', WOODLAND_TEXT_DOMAIN));
+	if ( $categories_list ) {
+		echo '<span class="categories-links">' . $categories_list . '</span>';
+	}
+
+	// Translators: used between list items, there is a space after the comma.
+	$tag_list = get_the_tag_list('', __(', ', WOODLAND_TEXT_DOMAIN) );
+	if ( $tag_list ) {
+		echo '<span class="tags-links">' . $tag_list . '</span>';
+	}
+
+	// Post author
+	if ('post' == get_post_type() ) {
+		printf('<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
+		esc_url( get_author_posts_url( get_the_author_meta('ID') ) ),
+		esc_attr( sprintf( __('View all posts by %s', WOODLAND_TEXT_DOMAIN), get_the_author() ) ),
+		get_the_author()
+		);
+	}
+}
+endif;
+
+if (!function_exists('woodland_entry_date')) :
+/**
+ * Woodkit entry-date
+*
+* @since Woodkit 1.0
+* @return void
+*/
+function woodland_entry_date($echo = true) {
+	if (has_post_format( array('chat', 'status')))
+		$format_prefix = _x('%1$s on %2$s', '1: post format name. 2: date', WOODLAND_TEXT_DOMAIN);
+	else
+		$format_prefix = '%2$s';
+
+	$date = sprintf('<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
+			esc_url( get_permalink() ),
+			esc_attr( sprintf( __('Permalink to %s', WOODLAND_TEXT_DOMAIN), the_title_attribute('echo=0') ) ),
+			esc_attr( get_the_date('c') ),
+			esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) )
+	);
+
+	if ( $echo )
+		echo $date;
+
+	return $date;
+}
+endif;

@@ -296,14 +296,38 @@ a:hover, a:focus, a:active{
 	font-size: 1.7rem;
 	text-align: left;
 }
+
+.entry-meta{
+	margin: 1em 0;
+}
+
+/**
+ * Content caption
+ */
+.wp-caption.alignleft, img.alignleft {
+    margin: 0 2.4rem 2.4rem 2.4rem;
+}
+
+.wp-caption.alignright, img.alignright {
+    margin: 2.4rem 0 2.4rem 2.4rem;
+}
  
 /**
  * Listing
  */
-.hentry.content-resume{
-	border-bottom: 1px solid #eee;
-	padding-bottom: 36px;
-	margin-bottom: 36px;
+.site-content .hentry.content-resume{
+	border-top: 1px solid #ddd;
+	padding-top: 36px;
+	margin-top: 36px;
+}
+.site-content .hentry.content-resume:first-child{
+	border-top: none;
+	padding-top: 0;
+	margin-top: 0;
+}
+
+.site-content .hentry.content-resume .entry-meta{
+	margin: 0.5em 0;
 }
 
 /**
@@ -439,6 +463,23 @@ span.wpcf7-not-valid-tip{
     content: "\f00d";
     margin-right: 6px;
 }
+
+/**
+ * Sidebar
+ */
+.site-main #sidebar{
+	border-top: 2px solid #1a1a1a;
+	padding: 1.5em 0 0 0;
+	margin: 1.5em 0 0 0;
+}
+
+.site-main #sidebar .widget{
+	width: 33%;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	padding: 1.5em;
+}
  
 /**
  * Media queries
@@ -501,11 +542,18 @@ span.wpcf7-not-valid-tip{
 	.main-navigation .menu-toggle{
 		display: inline;
 	}
+
+	.site-main #sidebar .widget{
+		width: 50%;
+	}
 } 
- 
-/**
- * Media queries
- */
+
+@media screen and (max-width: 640px) {
+	.site-main #sidebar .widget{
+		width: 100%;
+	}
+}
+
 @media screen and (max-width: 480px) {
 	#page {
 		padding: 24px;

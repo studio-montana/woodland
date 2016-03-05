@@ -55,13 +55,13 @@
 		
 				<div class="site-navigation" role="navigation">
 					<div class="site-navigation-container main-navigation" role="navigation">
-						<h3 class="menu-toggle"><i class="fa fa-bars"></i></h3>
+						<h3 class="menu-toggle"><i class="dashicons dashicons-menu"></i></h3>
 						<?php wp_nav_menu( array('theme_location' => 'primary', 'menu_class' => 'nav')); ?>
 						<div style="clear: both;"></div>
 					</div>
 				</div><!-- #site-navigation -->
-				
 			</div>
+			<div style="clear: both;"></div>
 		</header><!-- .site-header -->
 		
 		<?php if (function_exists("tool_breadcrumb")){ ?>

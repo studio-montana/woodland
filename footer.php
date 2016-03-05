@@ -14,7 +14,7 @@
 			<div class="site-footer-container">
 				<div class="site-info">
 					<div class="site-info-container">
-						<div>copyright ...</div>
+						<div><?php echo bloginfo('name')."&nbsp;&copy;&nbsp;".date('Y'); ?></div>
 					</div>
 				</div><!-- .site-info -->
 				<div class="credits">

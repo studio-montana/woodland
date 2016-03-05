@@ -10,6 +10,18 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('content-resume'); ?>>
 	<header class="entry-header">
+
+		<?php
+		if (function_exists('woodkit_display_title')){
+			woodkit_display_title(get_the_ID(), true, true, '<h1 class="entry-title"><a href="'.get_the_permalink().'" title="'.esc_attr(get_the_title()).'">', '</a></h1>');
+		}else{
+			?><h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a></h1><?php
+		} ?>
+		
+		<?php
+		if (function_exists('woodkit_display_subtitle')){
+			woodkit_display_subtitle();
+		} ?>
 	
 		<?php if (!post_password_required()){ ?>
 			<?php 
@@ -25,22 +37,10 @@
 			<?php }
 		} ?>
 
-		<?php
-		if (function_exists('woodkit_display_title')){
-			woodkit_display_title(get_the_ID(), true, true, '<h1 class="entry-title"><a href="'.get_the_permalink().'" title="'.esc_attr(get_the_title()).'">', '</a></h1>');
-		}else{
-			?><h1 class="entry-title"><a href="<?php the_permalink(); ?>" title="<?php echo esc_attr(get_the_title()); ?>"><?php the_title(); ?></a></h1><?php
-		} ?>
-		
-		<?php
-		if (function_exists('woodkit_display_subtitle')){
-			woodkit_display_subtitle();
-		} ?>
-
 		<div class="entry-meta">
 			<?php
-			if (function_exists('woodkit_entry_meta')){
-				woodkit_entry_meta();
+			if (function_exists('woodland_entry_meta')){
+				woodland_entry_meta();
 			} ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->

@@ -36,8 +36,8 @@
 
 		<div class="entry-meta">
 			<?php
-			if (function_exists('woodkit_entry_meta')){
-				woodkit_entry_meta();
+			if (function_exists('woodland_entry_meta')){
+				woodland_entry_meta();
 			} ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->

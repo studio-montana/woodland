@@ -1,3 +1,6 @@
+# gitignore himself
+.gitignore
+
 # exclude logs
 log/*
 

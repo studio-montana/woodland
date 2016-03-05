@@ -2,7 +2,7 @@
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
- Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -53,6 +53,11 @@ function woodland_setup() {
 	add_theme_support('post-formats', array());
 
 	/*
+	 * This theme supports title tag
+	*/
+	add_theme_support('title-tag');
+
+	/*
 	 * This theme uses wp_nav_menu() in one location.
 	*/
 	register_nav_menu('primary', __('Main menu', WOODLAND_TEXT_DOMAIN) );
@@ -67,6 +72,17 @@ function woodland_setup() {
 add_action('after_setup_theme', 'woodland_setup');
 
 /**
+ * Sets the content width in pixels, based on the theme's design and stylesheet.
+ * Priority 0 to make it available to lower priority callbacks.
+ *
+ * @global int $content_width
+*/
+function woodland_content_width() {
+	$GLOBALS['content_width'] = apply_filters('woodland_content_width', 1200);
+}
+add_action('after_setup_theme', 'woodland_content_width', 0);
+
+/**
  * Enqueue scripts and styles for the front end.
  *
  * @return void
@@ -78,7 +94,8 @@ function woodland_scripts_styles() {
 		$main_style_dependecies[] = 'woodkit-core-slider-style';
 	wp_enqueue_style('woodland-main-style', get_stylesheet_uri(), $main_style_dependecies, '1.0');
 
-	wp_enqueue_style('woodland-woodland-style', get_template_directory_uri().'/css/woodland.css', array('woodland-main-style'), '1.0');
+	if (file_exists(get_stylesheet_directory().'/css/woodland.css')) // doesn't load when woodland is overrided
+		wp_enqueue_style('woodland-woodland-style', get_stylesheet_directory_uri().'/css/woodland.css', array('woodland-main-style'), '1.0');
 
 	// Loads Internet Explorer specific stylesheet
 	wp_enqueue_style('ie', get_template_directory_uri().'/css/ie.css', array('style'), '1.0');
@@ -120,6 +137,20 @@ else
 	add_action('wp_enqueue_scripts', 'woodland_scripts_styles');
 
 /**
+ * admin init hook
+*/
+function woodland_admin_init() {
+	
+	// back-office editor styles
+	if (file_exists(get_stylesheet_directory().'/css/woodland-editor-style.css')) // doesn't load when woodland is overrided
+		add_editor_style('custom-editor-style.css');
+	else
+		add_editor_style(); // please create editor-style.css in your child theme
+	
+}
+add_action('admin_init', 'woodland_admin_init');
+
+/**
  * Register widgets areas.
  *
  * @return void
@@ -159,7 +190,7 @@ if (!class_exists('Woodkit') && !function_exists("get_protocol")):
 */
 function get_protocol(){
 	if (isset($_SERVER['HTTPS']) &&
-			($_SERVER['HTTPS'] == ‘on’ || $_SERVER['HTTPS'] == 1) ||
+			($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
 			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
 			$_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
 		$protocol = 'https://';
@@ -232,5 +263,38 @@ function woodland_entry_date($echo = true) {
 		echo $date;
 
 	return $date;
+}
+endif;
+
+if (!function_exists("woodland_get_displayed_post_types")):
+/**
+ * Récupère les post_types (exceptés "attachment", "revision", "nav_menu_item")
+* @param $sort : alphabetic sorting
+* @return array:
+*/
+function woodland_get_displayed_post_types($sort = false){
+	$displayed_post_types = array();
+	foreach (get_post_types() as $post_type){
+		if ($post_type !=  "attachment" &&  $post_type !=  "revision" && $post_type !=  "nav_menu_item"){
+			$post_type_object = get_post_type_object($post_type);
+			if ($post_type_object->public == 1){
+				$displayed_post_types[] = $post_type;
+			}
+		}
+	}
+	if ($sort == true)
+		usort($displayed_post_types, "woodland_cmp_posttypes");
+	return $displayed_post_types;
+}
+endif;
+
+if (!function_exists("woodland_cmp_posttypes")):
+/**
+ * Comparator for post_types string
+*/
+function woodland_cmp_posttypes($post_type_1, $post_type_2) {
+	$current_post_type_label_1 = get_post_type_labels(get_post_type_object($post_type_1));
+	$current_post_type_label_2 = get_post_type_labels(get_post_type_object($post_type_2));
+	return strcmp($current_post_type_label_1->name, $current_post_type_label_2->name);
 }
 endif;

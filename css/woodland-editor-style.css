@@ -1,4 +1,3 @@
-<?php
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
@@ -10,19 +9,4 @@
  This theme, like WordPress, is licensed under the GPL.
  Use it to make something cool, have fun, and share what you've learned with others.
  */
-?>
-<article class="content-none">
-	<header class="page-header">
-		<h1 class="page-title">
-			<?php if (is_search()){ ?>
-				<i class="icon-search"></i>
-				<?php _e('No result', WOODLAND_TEXT_DOMAIN); ?>
-			<?php }else{ ?>
-				<?php _e('No content', WOODLAND_TEXT_DOMAIN); ?>
-			<?php } ?>
-		</h1>
-	</header>
-	
-	<div class="page-content">
-	</div><!-- .page-content -->
-</article>
+ 

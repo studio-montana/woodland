@@ -1,7 +1,7 @@
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
- Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html

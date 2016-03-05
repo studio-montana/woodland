@@ -2,7 +2,7 @@
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
- Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -26,7 +26,7 @@
 						href="http://www.cyriltissot.com" title="Cyril Tissot">www.cyriltissot.com</a>
 					&nbsp;
 					<a target="_blank"
-						href="http://www.seb-c.com" title="Sébastien Chandonay">www.seb-c.com</a>
+						href="http://www.seb-c.com" title="Sebastien Chandonay">www.seb-c.com</a>
 				</div>
 			</div>
 		</footer><!-- #colophon -->

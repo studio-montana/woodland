@@ -2,7 +2,7 @@
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
- Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -41,7 +41,7 @@ function woodland_sitemap_get_node($post_type, $posts, $is_hierarchical = false)
 	<div id="primary" class="content-area page sitemap">
 		<div id="content" class="site-content" role="main">
 			<?php 
-			$available_posttypes = apply_filters("sitemap_available_posttypes", get_displayed_post_types(true));
+			$available_posttypes = apply_filters("sitemap_available_posttypes", woodland_get_displayed_post_types(true));
 			foreach ($available_posttypes as $post_type){
 				if ($post_type != 'wpcf7_contact_form'){
 					$is_hierarchical = is_post_type_hierarchical($post_type);

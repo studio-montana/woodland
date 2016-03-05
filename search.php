@@ -2,7 +2,7 @@
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
- Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -26,6 +26,13 @@ get_header();?>
 			<?php while ( have_posts() ) : the_post(); ?>
 				<?php get_template_part('content', 'resume'); ?>
 			<?php endwhile; ?>
+
+			<?php // Previous/next page navigation.
+			the_posts_pagination( array(
+					'prev_text'          => __( 'Previous page', WOODLAND_TEXT_DOMAIN),
+					'next_text'          => __( 'Next page', WOODLAND_TEXT_DOMAIN),
+					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', WOODLAND_TEXT_DOMAIN) . ' </span>',
+				)); ?>
 
 		<?php else : ?>
 			<?php get_template_part('content', 'none'); ?>

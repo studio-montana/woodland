@@ -2,7 +2,7 @@
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
- Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -24,13 +24,15 @@
 	<meta charset="<?php bloginfo('charset'); ?>">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title><?php esc_attr(wp_title(' | ', true, 'right')); ?></title>
 	<?php if(function_exists("woodkit_favicon_has") && woodkit_favicon_has()){ ?><link rel="icon" type="image/png" href="<?php echo woodkit_favicon_get_url(); ?>" /><!--[if IE]><link rel="shortcut icon" type="image/png" href="<?php echo woodkit_favicon_get_url(); ?>" /><![endif]--><?php } ?>
 	<link rel="profile" href="http://gmpg.org/xfn/11">
-	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+	<?php if ( is_singular() && pings_open( get_queried_object() ) ) : ?>
+	<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+	<?php endif; ?>
 	<!--[if lt IE 9]>
 	<script src="<?php echo get_stylesheet_directory_uri(); ?>/js/html5.js"></script>
 	<![endif]-->
+	<?php if ( is_singular() ) wp_enqueue_script( 'comment-reply' ); ?>
 	<?php wp_head(); ?>
 </head>
 

@@ -2,7 +2,7 @@
 /**
  Theme Name: Woodland
  Theme URI: http://lab.studio-montana.com/woodland-theme/
- Author: Studio Montana (Sébastien Chandonay / Cyril Tissot)
+ Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
  License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -51,7 +51,18 @@
 		<?php the_content(); ?>
 	</div><!-- .entry-content -->
 	
-	<?php if (function_exists("woodkit_pagination")) woodkit_pagination(array(), true, '<div class="pagination">', '</div>', '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'); ?>	
+	<?php if (function_exists("woodkit_pagination")){
+		woodkit_pagination(array(), true, '<div class="pagination">', '</div>', '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'); 
+	}else{ 
+		wp_link_pages( array(
+			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', WOODLAND_TEXT_DOMAIN) . '</span>',
+			'after'       => '</div>',
+			'link_before' => '<span>',
+			'link_after'  => '</span>',
+			'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', WOODLAND_TEXT_DOMAIN) . ' </span>%',
+			'separator'   => '<span class="screen-reader-text">, </span>',
+			) );
+	} ?>
 
 	<footer class="entry-meta">
 		<?php if (is_single() && get_the_author_meta('description') && is_multi_author()) : ?>

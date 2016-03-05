@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -20,13 +20,13 @@ get_header();?>
 			<header class="archive-header">
 				<h1 class="archive-title"><i class="icon-book"></i><?php
 					if ( is_day() ) :
-						printf( __('Archives %s', 'woodland'), get_the_date() );
+						printf( __('Archives %s', 'woodlands'), get_the_date() );
 					elseif ( is_month() ) :
-						printf( __('Archives %s', 'woodland'), get_the_date( _x('F Y', 'monthly archives date format', 'woodland') ) );
+						printf( __('Archives %s', 'woodlands'), get_the_date( _x('F Y', 'monthly archives date format', 'woodlands') ) );
 					elseif ( is_year() ) :
-						printf( __('Archives %s', 'woodland'), get_the_date( _x('Y', 'yearly archives date format', 'woodland') ) );
+						printf( __('Archives %s', 'woodlands'), get_the_date( _x('Y', 'yearly archives date format', 'woodlands') ) );
 					else :
-						_e('Archives', 'woodland');
+						_e('Archives', 'woodlands');
 					endif;
 				?></h1>
 			</header><!-- .archive-header -->
@@ -38,9 +38,9 @@ get_header();?>
 			
 			<?php // Previous/next page navigation.
 			the_posts_pagination( array(
-				'prev_text'          => __( 'Previous page', 'woodland'),
-				'next_text'          => __( 'Next page', 'woodland'),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'woodland') . ' </span>',
+				'prev_text'          => __( 'Previous page', 'woodlands'),
+				'next_text'          => __( 'Next page', 'woodlands'),
+				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'woodlands') . ' </span>',
 				)); ?>
 
 		<?php else : ?>

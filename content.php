@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -40,25 +40,25 @@
 
 		<div class="entry-meta">
 			<?php
-			if (function_exists('woodland_entry_meta')){
-				woodland_entry_meta();
+			if (function_exists('woodlands_entry_meta')){
+				woodlands_entry_meta();
 			} ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 
 	<div class="entry-content">
-		<?php the_content( __('Read more <span class="meta-nav">&rarr;</span>', 'woodland') ); ?>
+		<?php the_content( __('Read more <span class="meta-nav">&rarr;</span>', 'woodlands') ); ?>
 	</div><!-- .entry-content -->
 		
 	<?php if (function_exists("woodkit_pagination")){
 		woodkit_pagination(array(), true, '<div class="pagination">', '</div>', '<i class="fa fa-chevron-left"></i>', '<i class="fa fa-chevron-right"></i>'); 
 	}else{ 
 		wp_link_pages( array(
-			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'woodland') . '</span>',
+			'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'woodlands') . '</span>',
 			'after'       => '</div>',
 			'link_before' => '<span>',
 			'link_after'  => '</span>',
-			'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'woodland') . ' </span>%',
+			'pagelink'    => '<span class="screen-reader-text">' . __( 'Page', 'woodlands') . ' </span>%',
 			'separator'   => '<span class="screen-reader-text">, </span>',
 			) );
 	} ?>
@@ -66,7 +66,7 @@
 	<footer class="entry-meta">
 		<?php if (comments_open() && ! is_single()) : ?>
 			<div class="comments-link">
-				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', 'woodland') . '</span>', __('One comment', 'woodland'), __('See % comments', 'woodland') ); ?>
+				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', 'woodlands') . '</span>', __('One comment', 'woodlands'), __('See % comments', 'woodlands') ); ?>
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
 

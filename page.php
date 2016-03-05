@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later

@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -22,15 +22,15 @@ get_header(); ?>
 				</header>
 				<div class="entry-content">
 					<p class="causes-title">
-						<?php _e("We couldn't find the page you were looking for. This is either because", 'woodland'); ?>:
+						<?php _e("We couldn't find the page you were looking for. This is either because", 'woodlands'); ?>:
 					</p>
 					<ul class="causes">
-						<li><?php _e("There is an error in the URL entered into your web browser. Please check the URL and try again", 'woodland'); ?>.</li>
-						<li><?php _e("The page you are looking for has been moved or deleted", 'woodland'); ?>.</li>
+						<li><?php _e("There is an error in the URL entered into your web browser. Please check the URL and try again", 'woodlands'); ?>.</li>
+						<li><?php _e("The page you are looking for has been moved or deleted", 'woodlands'); ?>.</li>
 					</ul>
 					<p class="solution">
-						<?php _e("You can return to our homepage by", 'woodland'); ?>&nbsp;<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e("Home", 'woodland'); ?>"><?php _e("clicking here", 'woodland'); ?></a>,&nbsp;
-						<?php _e("or you can try searching for the content you are seeking", 'woodland'); ?>.
+						<?php _e("You can return to our homepage by", 'woodlands'); ?>&nbsp;<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php _e("Home", 'woodlands'); ?>"><?php _e("clicking here", 'woodlands'); ?></a>,&nbsp;
+						<?php _e("or you can try searching for the content you are seeking", 'woodlands'); ?>.
 						<?php get_search_form(); ?>
 					</p>
 				</div>

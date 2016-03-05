@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -24,7 +24,7 @@ if ( post_password_required() )
 	<?php if ( have_comments() ) : ?>
 		<h2 class="comments-title">
 			<?php
-				printf( _nx('One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'woodland'),
+				printf( _nx('One thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', get_comments_number(), 'comments title', 'woodlands'),
 					number_format_i18n( get_comments_number() ), '<span>' . get_the_title() . '</span>');
 			?>
 		</h2>
@@ -44,14 +44,14 @@ if ( post_password_required() )
 			if ( get_comment_pages_count() > 1 && get_option('page_comments') ) :
 		?>
 		<nav class="navigation comment-navigation" role="navigation">
-			<h1 class="screen-reader-text section-heading"><?php _e('Comment navigation', 'woodland'); ?></h1>
-			<div class="nav-previous"><?php previous_comments_link( __('&larr; Older Comments', 'woodland') ); ?></div>
-			<div class="nav-next"><?php next_comments_link( __('Newer Comments &rarr;', 'woodland') ); ?></div>
+			<h1 class="screen-reader-text section-heading"><?php _e('Comment navigation', 'woodlands'); ?></h1>
+			<div class="nav-previous"><?php previous_comments_link( __('&larr; Older Comments', 'woodlands') ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __('Newer Comments &rarr;', 'woodlands') ); ?></div>
 		</nav><!-- .comment-navigation -->
 		<?php endif; // Check for comment navigation ?>
 
 		<?php if ( ! comments_open() && get_comments_number() ) : ?>
-		<p class="no-comments"><?php _e('Comments are closed.' , 'woodland'); ?></p>
+		<p class="no-comments"><?php _e('Comments are closed.' , 'woodlands'); ?></p>
 		<?php endif; ?>
 
 	<?php endif; // have_comments() ?>

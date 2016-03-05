@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -43,8 +43,8 @@
 
 		<div class="entry-meta">
 			<?php
-			if (function_exists('woodland_entry_meta')){
-				woodland_entry_meta();
+			if (function_exists('woodlands_entry_meta')){
+				woodlands_entry_meta();
 			} ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
@@ -56,7 +56,7 @@
 	<footer class="entry-meta">
 		<?php if (comments_open() && ! is_single()) : ?>
 			<div class="comments-link">
-				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', 'woodland') . '</span>', __('One comment', 'woodland'), __('See % comments', 'woodland') ); ?>
+				<?php comments_popup_link('<span class="leave-reply">' . __('Comment', 'woodlands') . '</span>', __('One comment', 'woodlands'), __('See % comments', 'woodlands') ); ?>
 			</div><!-- .comments-link -->
 		<?php endif; // comments_open() ?>
 	</footer><!-- .entry-meta -->

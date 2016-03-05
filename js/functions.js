@@ -1,6 +1,6 @@
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -26,11 +26,11 @@
 	/**
 	 * Menu highlight
 	 */
-	var tool_menu_current_url = Woodland.current_url;
-	var tool_menu_home_url = Woodland.home_url;
-	var tool_menu_home_multisite_url = Woodland.home_multisite_url;
-	var tool_menu_blog_url = Woodland.blog_url;
-	var tool_menu_is_post = Woodland.is_post;
+	var tool_menu_current_url = Woodlands.current_url;
+	var tool_menu_home_url = Woodlands.home_url;
+	var tool_menu_home_multisite_url = Woodlands.home_multisite_url;
+	var tool_menu_blog_url = Woodlands.blog_url;
+	var tool_menu_is_post = Woodlands.is_post;
 	$(".nav a").each(
 			function(i) {
 				if ($(this).attr("href") != undefined) {

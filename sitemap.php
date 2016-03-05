@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -14,7 +14,7 @@
 get_header();?>
 
 <?php 
-function woodland_sitemap_get_node($post_type, $posts, $is_hierarchical = false){
+function woodlands_sitemap_get_node($post_type, $posts, $is_hierarchical = false){
 	global $post;
 	?>
 	<ul class="sitemap-box post-type-<?php echo $post_type; ?>">
@@ -27,7 +27,7 @@ function woodland_sitemap_get_node($post_type, $posts, $is_hierarchical = false)
 		if ($is_hierarchical){
 			$sub_posts = get_pages(array("post_type" => $post_type, 'numberposts' => -1, "orderby" => "name", "order" => "ASC", "parent" => get_the_ID(), "suppress_filters" => false));
 			if (!empty($sub_posts)){
-				woodland_sitemap_get_node($post_type, $sub_posts, $is_hierarchical);
+				woodlands_sitemap_get_node($post_type, $sub_posts, $is_hierarchical);
 			}
 		}
 		wp_reset_postdata();
@@ -41,7 +41,7 @@ function woodland_sitemap_get_node($post_type, $posts, $is_hierarchical = false)
 	<div id="primary" class="content-area page sitemap">
 		<div id="content" class="site-content" role="main">
 			<?php 
-			$available_posttypes = apply_filters("sitemap_available_posttypes", woodland_get_displayed_post_types(true));
+			$available_posttypes = apply_filters("sitemap_available_posttypes", woodlands_get_displayed_post_types(true));
 			foreach ($available_posttypes as $post_type){
 				if ($post_type != 'wpcf7_contact_form'){
 					$is_hierarchical = is_post_type_hierarchical($post_type);
@@ -53,7 +53,7 @@ function woodland_sitemap_get_node($post_type, $posts, $is_hierarchical = false)
 						$current_post_type_label = get_post_type_labels(get_post_type_object($post_type));
 						?>
 						<h3 class="sitemap-title post-type-<?php echo $post_type; ?>"><?php echo $current_post_type_label->name; ?></h3>
-						<?php woodland_sitemap_get_node($post_type, $posts, $is_hierarchical); ?>
+						<?php woodlands_sitemap_get_node($post_type, $posts, $is_hierarchical); ?>
 						<?php
 					}
 				}

@@ -1,7 +1,7 @@
 <?php
 /**
- Theme Name: Woodland
- Theme URI: http://lab.studio-montana.com/woodland-theme/
+ Theme Name: Woodlands
+ Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
  Author URI: http://www.studio-montana.com
  License: GNU General Public License v2 or later
@@ -51,9 +51,9 @@ get_header();?>
 			}else{
 				// Previous/next page navigation.
 				the_posts_pagination( array(
-						'prev_text'          => __( 'Previous page', 'woodland'),
-						'next_text'          => __( 'Next page', 'woodland'),
-						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'woodland') . ' </span>',
+						'prev_text'          => __( 'Previous page', 'woodlands'),
+						'next_text'          => __( 'Next page', 'woodlands'),
+						'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'woodlands') . ' </span>',
 					));
 			}
 			wp_reset_postdata();

@@ -83,6 +83,26 @@ a:hover, a:focus, a:active{
 }
 
 /**
+ * Splashscreen
+ */
+
+#splashscreen{
+	top: 12px;
+	right: 12px;
+	bottom: 12px;
+	left: 12px;
+	width: auto;
+	height: auto;
+}
+
+#splashscreen #splashscreen-text{
+	font-size: 1.5rem;
+	text-transform: uppercase;
+	font-family: 'Roboto', 'Helvetica', Arial, sans-serif;
+	font-weight: 300;
+}
+
+/**
  * Cookies
  */
 

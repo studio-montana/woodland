@@ -364,6 +364,11 @@ a:hover, a:focus, a:active{
 	padding: 0 0 12px 12px;
 }
 
+.masonry-item.template-thumb .inner-item-wrapper, .isotope-item.template-thumb .inner-item-wrapper{
+	padding: 12px;
+	border: 1px solid #000;
+}
+
 .masonry-item.template-content .has-infos, .isotope-item.template-content .has-infos{
 	min-height: 120px;
 }

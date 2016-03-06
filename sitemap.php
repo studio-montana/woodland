@@ -1,5 +1,6 @@
 <?php
 /**
+ Template Name: Sitemap
  Theme Name: Woodlands
  Theme URI: http://lab.studio-montana.com/woodlands-theme/
  Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)

@@ -38,7 +38,7 @@
 
 <body <?php body_class(); ?>>
 
-	<?php do_action("woodlands_html_before_page"); ?>
+	<?php if (function_exists("woodkit_splashscreen")){ woodkit_splashscreen(); }; ?>
 
 	<div id="page" class="hfeed site">
 	

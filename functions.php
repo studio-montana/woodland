@@ -67,6 +67,11 @@ function woodlands_setup() {
 	add_theme_support('post-thumbnails');
 	set_post_thumbnail_size(1200, 300, true);
 	add_image_size('post-content', 1200, 400, true);
+
+	/*
+	 * Woocommerce support
+	*/
+	add_theme_support('woocommerce');
 }
 add_action('after_setup_theme', 'woodlands_setup');
 
@@ -139,13 +144,13 @@ else
  * admin init hook
 */
 function woodlands_admin_init() {
-	
+
 	// back-office editor styles
 	if (file_exists(get_stylesheet_directory().'/css/woodlands-editor-style.css')) // doesn't load when woodlands is overrided
 		add_editor_style('css/woodlands-editor-style.css');
 	else
 		add_editor_style(); // please create editor-style.css in your child theme
-	
+
 }
 add_action('admin_init', 'woodlands_admin_init');
 
@@ -297,3 +302,17 @@ function woodlands_cmp_posttypes($post_type_1, $post_type_2) {
 	return strcmp($current_post_type_label_1->name, $current_post_type_label_2->name);
 }
 endif;
+
+/**
+ * WooCommerce Supports (theme's supports - http://docs.woothemes.com/document/third-party-woodkit-theme-compatibility/)
+ */
+remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+add_action('woocommerce_before_main_content', 'woodlands_woocommerce_wrapper_start', 10);
+add_action('woocommerce_after_main_content', 'woodlands_woocommerce_wrapper_end', 10);
+function woodlands_woocommerce_wrapper_start() {
+	echo '<section id="main">';
+}
+function woodlands_woocommerce_wrapper_end() {
+	echo '</section>';
+}

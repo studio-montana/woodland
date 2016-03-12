@@ -30,7 +30,7 @@
 		<?php if (!post_password_required()){ ?>
 			<?php 
 			if (function_exists('woodkit_display_thumbnail')){
-				woodkit_display_thumbnail(get_the_ID(), 'post-thumbnail', '' , true, false, true, '<div class="entry-thumbnail"><a href="'.get_the_permalink().'" title="'.esc_attr(get_the_title()).'">', '</a></div>');
+				woodkit_display_thumbnail(get_the_ID(), 'post-thumbnail', '' , true, false, '<div class="entry-thumbnail"><a href="'.get_the_permalink().'" title="'.esc_attr(get_the_title()).'">', '</a></div>');
 			}else if (has_post_thumbnail()){
 				?>
 				<div class="entry-thumbnail">

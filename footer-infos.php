@@ -11,17 +11,8 @@
  Use it to make something cool, have fun, and share what you've learned with others.
  */
 ?>
-				<div style="clear: both;"></div>
-			</div><!-- main container -->
-		</div><!-- #main -->
-		<footer id="colophon" class="site-footer" role="contentinfo">
-			<div class="site-footer-container">
-				<?php get_template_part('footer', 'infos'); ?>
-				<?php get_template_part('footer', 'credits'); ?>
-			</div>
-		</footer><!-- #colophon -->
-	</div><!-- #page -->
-
-	<?php wp_footer(); ?>
-</body>
-</html>
+<div class="site-info">
+	<div class="site-info-container">
+		<div><?php echo bloginfo('name')."&nbsp;&copy;&nbsp;".date('Y'); ?></div>
+	</div>
+</div><!-- .site-info -->

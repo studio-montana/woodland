@@ -96,7 +96,9 @@ function woodlands_scripts_styles() {
 	$main_style_dependecies = array();
 	if (class_exists('Woodkit')) // Woodkit plugin support
 		$main_style_dependecies[] = 'woodkit-core-slider-style';
-	wp_enqueue_style('woodlands-main-style', get_stylesheet_uri(), $main_style_dependecies, '1.0');
+	$main_style_version = "1.0";
+	$main_style_version = apply_filters("woodlands_main_style_version", $main_style_version);
+	wp_enqueue_style('woodlands-main-style', get_stylesheet_uri(), $main_style_dependecies, $main_style_version);
 
 	if (file_exists(get_stylesheet_directory().'/css/woodlands.css')) // doesn't load when woodlands is overrided
 		wp_enqueue_style('woodlands-woodlands-style', get_stylesheet_directory_uri().'/css/woodlands.css', array('woodlands-main-style'), '1.0');

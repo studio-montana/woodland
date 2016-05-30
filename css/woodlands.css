@@ -344,6 +344,12 @@ a:hover,a:focus,a:active {
 	background: #1a1a1a;
 	padding: 24px;
 	font-weight: 300;
+	margin: 24px 0;
+}
+
+.entry-content .shortcode-exergue-wrapper p {
+	color: #fff;
+	font-weight: 300;
 }
 
 /**

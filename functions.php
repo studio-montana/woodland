@@ -103,9 +103,6 @@ function woodlands_scripts_styles() {
 	$main_style_version = apply_filters("woodlands_main_style_version", $main_style_version);
 	wp_enqueue_style('woodlands-main-style', get_stylesheet_uri(), $main_style_dependecies, $main_style_version);
 
-	if (file_exists(get_stylesheet_directory().'/css/woodlands.css')) // doesn't load when woodlands is overrided
-		wp_enqueue_style('woodlands-woodlands-style', get_stylesheet_directory_uri().'/css/woodlands.css', array('woodlands-main-style'), '1.0');
-
 	// Loads Internet Explorer specific stylesheet
 	wp_enqueue_style('ie', get_template_directory_uri().'/css/ie.css', array('style'), '1.0');
 	wp_style_add_data('ie', 'conditional', 'lt IE 9');
@@ -138,6 +135,14 @@ function woodlands_scripts_styles() {
 	'blog_url' => $blog_url,
 	'is_post' => $is_post
 	));
+
+	// Woodlands style
+	if (file_exists(get_stylesheet_directory().'/css/woodlands.css')) // doesn't load when woodlands is overrided
+		wp_enqueue_style('woodlands-woodlands-style', get_stylesheet_directory_uri().'/css/woodlands.css', array('woodlands-main-style'), '1.0');
+
+	// Woodlands script
+	if (file_exists(get_stylesheet_directory().'/js/woodlands.js')) // doesn't load when woodlands is overrided
+		wp_enqueue_script('woodlands-woodlands-script', get_stylesheet_directory_uri().'/js/woodlands.js', array('script-woodlands-functions'), '1.0', true);
 	
 	// Action after woodlands enqueue scripts
 	do_action("woodlands_front_enqueue_scripts_after");

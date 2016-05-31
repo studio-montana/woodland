@@ -70,30 +70,48 @@
 	}
 
 	/**
-	 * Menu scrollover
+	 * Scrollover
 	 */
+	// initial header position
+	var header = $('.site-header');
+	var header_initial_position = 0;
+	if (header.length > 0) {
+		header_initial_position = header.offset().top;
+	}
 	// initial main menu position
 	var main_menu = $('.site-navigation');
 	var main_menu_initial_position = 0;
 	if (main_menu.length > 0) {
 		main_menu_initial_position = main_menu.offset().top;
-
-		// listen scroll page
-		$(window).on('scroll', function(e) {
-			tool_menu_fixed_on_scroll();
-		});
-
-		// init
-		tool_menu_fixed_on_scroll();
 	}
 
-	function tool_menu_fixed_on_scroll() {
+	// listen scroll page
+	$(window).on('scroll', function(e) {
+		scrollover_on_scroll();
+	});
+	// init
+	scrollover_on_scroll();
+
+	function scrollover_on_scroll() {
+		// header
+		if ($(window).scrollTop() >= header_initial_position) {
+			// fixed
+			$('.site-header').addClass("scrollover");
+			$('body').addClass("header-scrollover");
+		} else {
+			// relative
+			$('.site-header').removeClass("scrollover");
+			$('body').removeClass("header-scrollover");
+		}
+		// main menu
 		if ($(window).scrollTop() >= main_menu_initial_position) {
 			// fixed
 			$('.site-navigation').addClass("scrollover");
+			$('body').addClass("menu-scrollover");
 		} else {
 			// relative
 			$('.site-navigation').removeClass("scrollover");
+			$('body').removeClass("menu-scrollover");
 		}
 	}
 

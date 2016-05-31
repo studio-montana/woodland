@@ -34,6 +34,12 @@ body,button,input,select,textarea,p {
 	font-weight: 400;
 }
 
+p,.p-like,ul,ol,dl,blockquote,pre,td,th,label,textarea,caption,details,figure,.shortcode-exergue-wrapper
+	{
+	margin-top: 0.75em;
+	margin-bottom: 0;
+}
+
 h1,.h1-like {
 	font-size: 3.9rem;
 }
@@ -56,7 +62,7 @@ a:hover,a:focus,a:active {
 #page {
 	width: 100%;
 	background: transparent;
-	padding: 48px;
+	padding: 0 48px 48px 48px;
 }
 
 #page:before {
@@ -132,7 +138,7 @@ a:hover,a:focus,a:active {
 /**
  * General sizes
  */
-.site-header,.site-main,.site-footer {
+.site-header-container,.site-main,.site-footer {
 	display: block;
 	height: auto;
 	max-width: 1200px;
@@ -141,20 +147,32 @@ a:hover,a:focus,a:active {
 	position: relative;
 }
 
-.site-header {
-	margin-bottom: 48px;
-	min-height: 140px;
-	z-index: 0;
-}
-
 /**
  * Header
  */
-.site-branding {
-	position: absolute;
-	top: 0;
-	left: 0;
+.site-header {
+	min-height: 112px;
+	margin-bottom: 24px;
+}
+
+.site-header-container {
+	position: fixed;
+	top: 12px;
+	left: 12px;
+	right: 12px;
 	width: auto;
+	background: #fff;
+	min-height: 103px;
+	z-index: 999;
+	border-bottom: 1px solid #000;
+}
+
+.site-branding {
+	width: auto;
+	position: absolute;
+	left: 24px;
+	right: auto;
+	top: 15px;
 }
 
 .site-title {
@@ -179,47 +197,63 @@ a:hover,a:focus,a:active {
  * Navigation
  */
 .site-navigation {
-	display: inline;
-	width: auto;
-	float: right;
+	
 }
 
 .site-navigation-container,.main-navigation {
 	padding: 0;
 	margin: 0;
-	position: relative;
-	display: inline;
-	width: auto;
-	float: right;
 }
 
 .main-navigation .menu-toggle {
 	color: #1a1a1a;
-	display: none;
+	display: inline-block;
 	background: transparent;
-	position: fixed;
-	right: 54px;
+	position: absolute;
+	right: 24px;
 	left: auto;
-	top: 48px;
+	top: 32px;
 	clear: none;
 	width: auto;
 	z-index: 999;
 	color: #1a1a1a;
 }
 
-.main-navigation ul {
-	float: right;
-	position: relative;
+.main-navigation .menu-toggle i {
+	font-size: 25px;
+}
+
+.main-navigation ul.nav {
+	display: none;
+	position: fixed;
+	top: 115px;
+	left: 12px;
+	right: 12px;
+	bottom: 12px;
+	background: #fff;
+	overflow: scroll;
+	padding: 12px 0 48px 0;
+}
+
+body.menu-toggled .main-navigation ul.nav {
 	display: block;
 }
 
-.main-navigation ul li {
+.main-navigation ul.nav>li {
 	position: relative;
-	margin: 0;
-	text-align: right;
-	float: none;
-	display: inline-block;
+	margin: 0 auto 0 auto;
+	padding: 12px 0 12px 0;
 	vertical-align: top;
+	float: none;
+	display: block;
+	text-align: center;
+	width: 100%;
+	max-width: 480px;
+	display: block;
+	text-align: center;
+	width: 100%;
+	max-width: 480px;
+	border-bottom: 1px solid #ECECEC;
 }
 
 .main-navigation a {
@@ -235,6 +269,10 @@ a:hover,a:focus,a:active {
 	text-decoration: none;
 }
 
+.main-navigation ul.nav>li>a {
+	text-transform: uppercase;
+}
+
 .main-navigation ul ul.sub-menu {
 	float: none;
 	position: relative;
@@ -244,13 +282,13 @@ a:hover,a:focus,a:active {
 	bottom: auto;
 	display: block;
 	margin: 0;
-	padding: 0;
+	padding: 6px 0 0 0;
 	background: transparent;
 	z-index: 0;
 }
 
 .main-navigation ul ul.sub-menu>li {
-	padding: 0;
+	padding: 3px 0;
 	position: relative;
 	display: block;
 }
@@ -284,6 +322,14 @@ a:hover,a:focus,a:active {
 	width: 100%;
 	margin: 0 auto 24px auto;
 	position: relative;
+}
+
+.tool-breadcrumb li.breadcrumb-item:first-child > a{
+	padding-left: 0;
+}
+
+.site-breadcrumb ul li.breadcrumb-item.current>a {
+	color: #000;
 }
 
 /**
@@ -342,9 +388,8 @@ a:hover,a:focus,a:active {
 .entry-content .shortcode-exergue-wrapper {
 	color: #fff;
 	background: #1a1a1a;
-	padding: 24px;
 	font-weight: 300;
-	margin: 24px 0;
+	padding: 18px;
 }
 
 .entry-content .shortcode-exergue-wrapper p {
@@ -545,71 +590,17 @@ span.wpcf7-not-valid-tip {
  * Media queries
  */
 @media screen and (max-width: 1000px) {
-	.site-header {
-		position: fixed;
-		top: 12px;
-		left: 12px;
-		right: 12px;
-		width: auto;
-		background: #fff;
-		min-height: 100px;
-		z-index: 999;
-	}
-	.site-branding {
-		position: absolute;
-		left: 48px;
-		right: auto;
-		top: 15px;
-	}
-	.site-main {
-		margin-top: 120px;
-	}
-	.main-navigation ul {
-		display: none;
-		position: fixed;
-		top: 12px;
-		left: 12px;
-		right: 12px;
-		bottom: 12px;
-		background: #fff;
-		overflow: scroll;
-		padding-top: 12px;
-	}
-	.main-navigation ul ul {
-		padding-top: 0;
-	}
-	.main-navigation ul li {
-		display: block;
-		text-align: center;
-		margin-top: 12px;
-		padding-top: 12px;
-	}
-	.main-navigation ul ul>li a {
-		border: none;
-	}
-	.menu-toggled .main-navigation ul {
-		display: block;
-	}
-	.main-navigation .menu-toggle {
-		display: inline;
-	}
 	.site-main #sidebar .widget {
 		width: 50%;
 	}
 }
 
 @media screen and (max-width: 640px) {
-	.site-main #sidebar .widget {
-		width: 100%;
+	.site-header{
+		min-height: 72px;
 	}
-}
-
-@media screen and (max-width: 480px) {
-	#page {
-		padding: 24px;
-	}
-	.site-branding {
-		left: 24px;
+	.site-header-container {
+		min-height: 60px;
 	}
 	.site-branding .site-title {
 		font-size: 3rem;
@@ -617,12 +608,23 @@ span.wpcf7-not-valid-tip {
 	.site-branding .site-description {
 		display: none;
 	}
-	.site-header {
-		min-height: 60px;
-	}
 	.main-navigation .menu-toggle {
-		top: 26px;
-		right: 30px;
+		top: 9px;
+	}
+	.main-navigation ul.nav {
+		top: 72px;
+	}
+	.site-breadcrumb{
+		display: none;
+	}
+	.site-main #sidebar .widget {
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 480px) {
+	#page {
+		padding: 0 24px 24px 24px;
 	}
 	.entry-subtitle {
 		font-size: 1.8rem;

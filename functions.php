@@ -92,6 +92,9 @@ add_action('after_setup_theme', 'woodlands_content_width', 0);
  * @return void
 */
 function woodlands_scripts_styles() {
+	
+	// Action before woodlands enqueue scripts
+	do_action("woodlands_front_enqueue_scripts_before");
 
 	$main_style_dependecies = array();
 	if (class_exists('Woodkit')) // Woodkit plugin support
@@ -135,6 +138,9 @@ function woodlands_scripts_styles() {
 	'blog_url' => $blog_url,
 	'is_post' => $is_post
 	));
+	
+	// Action after woodlands enqueue scripts
+	do_action("woodlands_front_enqueue_scripts_after");
 
 }
 if (class_exists('Woodkit')) // Woodkit plugin support

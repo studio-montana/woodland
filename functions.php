@@ -159,10 +159,13 @@ else
 function woodlands_admin_init() {
 
 	// back-office editor styles
+	if (file_exists(get_template_directory().'/css/editor-style.css'))
+		add_editor_style('css/editor-style.css');
+
 	if (file_exists(get_stylesheet_directory().'/css/woodlands-editor-style.css')) // doesn't load when woodlands is overrided
 		add_editor_style('css/woodlands-editor-style.css');
 	else
-		add_editor_style(); // please create editor-style.css in your child theme
+		add_editor_style(); // please create editor-style.css at root of your child theme
 
 }
 add_action('admin_init', 'woodlands_admin_init');

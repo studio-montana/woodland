@@ -31,7 +31,7 @@ body {
 
 body,button,input,select,textarea,p {
 	font-family: 'Roboto', 'Helvetica', Arial, sans-serif;
-	font-weight: 400;
+	font-weight: 300;
 }
 
 p,.p-like,ul,ol,dl,blockquote,pre,td,th,label,textarea,caption,details,figure,.shortcode-exergue-wrapper
@@ -47,6 +47,7 @@ h1,.h1-like {
 h1,h2,h3,h4,h5,h6 {
 	font-family: 'Roboto', 'Helvetica', Arial, sans-serif;
 	font-weight: 400;
+	margin: 0.7em 0;
 }
 
 a {
@@ -61,7 +62,6 @@ a:hover,a:focus,a:active {
 
 #page {
 	width: 100%;
-	background: transparent;
 	padding: 0 48px 48px 48px;
 }
 
@@ -151,7 +151,7 @@ a:hover,a:focus,a:active {
  * Header
  */
 .site-header {
-	min-height: 112px;
+	min-height: 152px;
 	margin-bottom: 24px;
 }
 
@@ -162,7 +162,7 @@ a:hover,a:focus,a:active {
 	right: 12px;
 	width: auto;
 	background: #fff;
-	min-height: 103px;
+	min-height: 140px;
 	z-index: 999;
 	border-bottom: 1px solid #000;
 }
@@ -172,7 +172,7 @@ a:hover,a:focus,a:active {
 	position: absolute;
 	left: 24px;
 	right: auto;
-	top: 15px;
+	top: 30px;
 }
 
 .site-title {
@@ -212,7 +212,7 @@ a:hover,a:focus,a:active {
 	position: absolute;
 	right: 24px;
 	left: auto;
-	top: 32px;
+	top: 48px;
 	clear: none;
 	width: auto;
 	z-index: 999;
@@ -224,19 +224,25 @@ a:hover,a:focus,a:active {
 }
 
 .main-navigation ul.nav {
-	display: none;
+	display: block;
 	position: fixed;
-	top: 115px;
+	top: 152px;
 	left: 12px;
 	right: 12px;
-	bottom: 12px;
+	bottom: auto;
+	height: 0px;
 	background: #fff;
 	overflow: scroll;
-	padding: 12px 0 48px 0;
+	padding: 0;
+	-webkit-transition: all 0.4s ease-in-out 0s;
+	transition: all 0.4s ease-in-out 0s;
+	z-index: 999;
 }
 
 body.menu-toggled .main-navigation ul.nav {
-	display: block;
+	bottom: 12px;
+	height: auto;
+	padding: 12px 0 48px 0;
 }
 
 .main-navigation ul.nav>li {
@@ -324,7 +330,11 @@ body.menu-toggled .main-navigation ul.nav {
 	position: relative;
 }
 
-.tool-breadcrumb li.breadcrumb-item:first-child > a{
+body.home .site-breadcrumb {
+	display: none;
+}
+
+.tool-breadcrumb li.breadcrumb-item:first-child>a {
 	padding-left: 0;
 }
 
@@ -349,32 +359,32 @@ body.menu-toggled .main-navigation ul.nav {
 }
 
 .entry-content h1 {
-	font-size: 3.2rem;
+	font-size: 3rem;
 	text-align: left;
 }
 
 .entry-content h2 {
-	font-size: 2.9rem;
-	text-align: left;
-}
-
-.entry-content h3 {
 	font-size: 2.6rem;
 	text-align: left;
 }
 
-.entry-content h4 {
+.entry-content h3 {
 	font-size: 2.3rem;
 	text-align: left;
 }
 
-.entry-content h5 {
+.entry-content h4 {
 	font-size: 2rem;
 	text-align: left;
 }
 
-.entry-content h6 {
+.entry-content h5 {
 	font-size: 1.7rem;
+	text-align: left;
+}
+
+.entry-content h6 {
+	font-size: 1.5rem;
 	text-align: left;
 }
 
@@ -430,6 +440,21 @@ body.menu-toggled .main-navigation ul.nav {
 /**
  * Wall
  */
+.masonry-wall-search-field-wrapper, .isotope-wall-search-field-wrapper{
+	margin-bottom: 12px;
+}
+
+.masonry-wall-search-field-wrapper input, .isotope-wall-search-field-wrapper input{
+	border-left: none;
+	border-top: none;
+	border-right: none;
+}
+
+.masonry-wrapper,.isotope-wrapper,.classic-wrapper
+	{
+	margin: 24px 0;
+}
+ 
 .masonry-wrapper ul.masonry,.isotope-wrapper ul.isotope,.classic-wrapper ul.classic
 	{
 	margin: 0 0 0 -12px;
@@ -453,7 +478,11 @@ body.menu-toggled .main-navigation ul.nav {
 
 .masonry-item.template-content .has-infos .title,.isotope-item.template-content .has-infos .title
 	{
-	margin-bottom: 6px;
+	margin-bottom: 9px;
+    text-align: center;
+    border-bottom: 1px solid #000;
+    padding-bottom: 9px;
+    font-weight: 400;
 }
 
 .masonry-item.template-content .has-infos .thumb,.isotope-item.template-content .has-infos .thumb
@@ -590,13 +619,28 @@ span.wpcf7-not-valid-tip {
  * Media queries
  */
 @media screen and (max-width: 1000px) {
+	.site-header {
+		min-height: 112px;
+	}
+	.site-header-container {
+		min-height: 103px;
+	}
+	.site-branding {
+		top: 15px;
+	}
+	.main-navigation .menu-toggle {
+		top: 32px;
+	}
+	.main-navigation ul.nav {
+		top: 115px;
+	}
 	.site-main #sidebar .widget {
 		width: 50%;
 	}
 }
 
 @media screen and (max-width: 640px) {
-	.site-header{
+	.site-header {
 		min-height: 72px;
 	}
 	.site-header-container {
@@ -614,11 +658,35 @@ span.wpcf7-not-valid-tip {
 	.main-navigation ul.nav {
 		top: 72px;
 	}
-	.site-breadcrumb{
+	.site-breadcrumb {
 		display: none;
 	}
 	.site-main #sidebar .widget {
 		width: 100%;
+	}
+	.entry-title {
+		font-size: 3rem;
+	}
+	.entry-subtitle {
+		font-size: 1.5rem;
+	}
+	.entry-content h1 {
+		font-size: 2.8rem;
+	}
+	.entry-content h2 {
+		font-size: 2.6rem;
+	}
+	.entry-content h3 {
+		font-size: 2.3rem;
+	}
+	.entry-content h4 {
+		font-size: 2rem;
+	}
+	.entry-content h5 {
+		font-size: 1.7rem;
+	}
+	.entry-content h6 {
+		font-size: 1.7rem;
 	}
 }
 

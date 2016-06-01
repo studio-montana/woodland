@@ -366,6 +366,21 @@ body.home .site-breadcrumb {
 .entry-content h2 {
 	font-size: 2.6rem;
 	text-align: left;
+	padding-left: 18px;
+	position: relative;
+}
+
+.entry-content h2:before {
+	font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 18px;
+    content: "\f0da";
+    position: absolute;
+    left: 0;
+    top: 7px;
 }
 
 .entry-content h3 {

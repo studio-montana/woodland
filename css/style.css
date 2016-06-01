@@ -722,20 +722,10 @@ input[type="checkbox"],input[type="radio"] {
 	padding: 0;
 }
 
-.hentry
-.sticky
-:not
- 
-(
-.has-post-thumbnail
- 
-)
-{
-padding
-:
- 
-0;
+.hentry.sticky:not(.has-post-thumbnail){
+	padding: 0;
 }
+
 .hentry+.hentry {
 	
 }
@@ -845,21 +835,8 @@ a.post-thumbnail:hover,a.post-thumbnail:focus {
 	
 }
 
-.updated
-:not
- 
-(
-.published
- 
-)
-{
-display
-:
- 
-none
-;
-
-
+.updated:not(.published){
+	display:none;
 }
 .sticky .posted-on {
 	display: none;
@@ -903,36 +880,9 @@ none
 	padding: 0 1rem;
 }
 
-.image-navigation
- 
-.nav-previous
-:not
- 
-(
-:empty
- 
-),
-.image-navigation
- 
-.nav-next
-:not
-
-	
-(
-:empty
- 
-)
-{
-margin
-:
- 
-0
-0
-2
-.4rem
-;
-
-
+.image-navigation .nav-previous:not(:empty),
+.image-navigation.nav-next:not(:empty){
+	margin: 0 0 2 .4rem;
 }
 .comments-area {
 	

@@ -1,4 +1,3 @@
-/*
 Theme Name: Woodlands
 Theme URI: http://lab.studio-montana.com/woodlands-theme/
 Author: Studio Montana (Sebastien Chandonay / Cyril Tissot)
@@ -12,6 +11,9 @@ Text Domain: woodlands
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
-*/
 
-/** override styles after this comment */
+----------------
+
+This theme can be use to get really simple theme which match mith all Woodkit functionnalities.
+
+Thank for use it and enjoy !

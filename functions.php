@@ -21,11 +21,6 @@ define('WOODLAND_JS_FOLDER', 'js/');
 define('WOODLAND_LANG_FOLDER', 'lang/');
 
 /**
- * Remove generator tag from html source code
-*/
-remove_action('wp_head', 'wp_generator');
-
-/**
  * Woodlands setup.
  *
  * @return void
@@ -95,13 +90,23 @@ function woodlands_scripts_styles() {
 	
 	// Action before woodlands enqueue scripts
 	do_action("woodlands_front_enqueue_scripts_before");
-
-	$main_style_dependecies = array();
+	
+	$first_style_dependecies = array();
 	if (class_exists('Woodkit')) // Woodkit plugin support
-		$main_style_dependecies[] = 'woodkit-core-slider-style';
+		$first_style_dependecies[] = 'woodkit-core-slider-style';
+	
+	// Knacss style
+	if (file_exists(get_template_directory().'/css/knacss.css'))
+		wp_enqueue_style('woodlands-knacss-style', get_template_directory_uri().'/css/knacss.css', $first_style_dependecies, '1.0');
+	
+	// Knacss style
+	if (file_exists(get_template_directory().'/css/style.css'))
+		wp_enqueue_style('woodlands-style-style', get_template_directory_uri().'/css/style.css', array('woodlands-knacss-style'), '1.0');
+	
+
 	$main_style_version = "1.0";
 	$main_style_version = apply_filters("woodlands_main_style_version", $main_style_version);
-	wp_enqueue_style('woodlands-main-style', get_stylesheet_uri(), $main_style_dependecies, $main_style_version);
+	wp_enqueue_style('woodlands-main-style', get_stylesheet_uri(), array("woodlands-style-style"), $main_style_version);
 
 	// Loads Internet Explorer specific stylesheet
 	wp_enqueue_style('ie', get_template_directory_uri().'/css/ie.css', array('style'), '1.0');
@@ -127,7 +132,7 @@ function woodlands_scripts_styles() {
 	}else{
 		$is_post = "0";
 	}
-	$current_url = get_current_url();
+	$current_url = woodlands_get_current_url();
 	wp_localize_script('script-woodlands-functions', 'Woodlands', array(
 	'current_url' => $current_url,
 	'home_url' => $home_url,
@@ -188,27 +193,27 @@ function woodlands_widgets_init() {
 }
 add_action('widgets_init', 'woodlands_widgets_init');
 
-if (!class_exists('Woodkit') && !function_exists("get_current_url")):
+if (!function_exists("woodlands_get_current_url")):
 /**
  * get the current URL
 */
-function get_current_url($with_parameters = false){
+function woodlands_get_current_url($with_parameters = false){
 	if ($with_parameters){
-		$protocol = get_protocol();
+		$protocol = woodlands_get_protocol();
 		return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 	}else{
 		$uri_parts = explode('?', $_SERVER['REQUEST_URI']);
-		$protocol = get_protocol();
+		$protocol = woodlands_get_protocol();
 		return $protocol . $_SERVER['HTTP_HOST'] . $uri_parts[0];
 	}
 }
 endif;
 
-if (!class_exists('Woodkit') && !function_exists("get_protocol")):
+if (!function_exists("woodlands_get_protocol")):
 /**
  * get the current Protocol (http || https)
 */
-function get_protocol(){
+function woodlands_get_protocol(){
 	if (isset($_SERVER['HTTPS']) &&
 			($_SERVER['HTTPS'] == 'on' || $_SERVER['HTTPS'] == 1) ||
 			isset($_SERVER['HTTP_X_FORWARDED_PROTO']) &&
@@ -322,8 +327,8 @@ endif;
 /**
  * WooCommerce Supports (theme's supports - http://docs.woothemes.com/document/third-party-woodkit-theme-compatibility/)
  */
-remove_action( 'woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
-remove_action( 'woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
 add_action('woocommerce_before_main_content', 'woodlands_woocommerce_wrapper_start', 10);
 add_action('woocommerce_after_main_content', 'woodlands_woocommerce_wrapper_end', 10);
 function woodlands_woocommerce_wrapper_start() {

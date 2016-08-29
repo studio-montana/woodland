@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Woodlands\n"
-"POT-Creation-Date: 2016-03-05 14:11+0100\n"
-"PO-Revision-Date: 2016-03-05 14:11+0100\n"
-"Last-Translator: Sebastien Chandonay <sebastien.chandonay@gmail.com>\n"
+"POT-Creation-Date: 2016-08-06 15:40+0100\n"
+"PO-Revision-Date: 2016-08-06 15:40+0100\n"
+"Last-Translator: Sébastien Chandonay <sebastien.chandonay@gmail.com>\n"
 "Language-Team: Sebastien Chandonay / Cyril Tissot <sebastien.chandonay@gmail."
 "com artcyril@gmail.com>\n"
 "Language: fr\n"
@@ -57,6 +57,19 @@ msgstr "Archives %s"
 msgid "Archives"
 msgstr "Archives"
 
+#: ../archive.php:41 ../index.php:54 ../search.php:32
+msgid "Previous page"
+msgstr "Page précédente"
+
+#: ../archive.php:42 ../index.php:55 ../search.php:33
+msgid "Next page"
+msgstr "Page suivante"
+
+#: ../archive.php:43 ../content-page.php:62 ../content.php:61 ../image.php:52
+#: ../index.php:56 ../search.php:34
+msgid "Page"
+msgstr "Page"
+
 #: ../author-bio.php:30
 #, php-format
 msgid "About %s"
@@ -96,15 +109,19 @@ msgstr "Aucun résultat"
 msgid "No content"
 msgstr "Aucun contenu"
 
-#: ../content-resume.php:59 ../content.php:58
+#: ../content-page.php:58 ../content.php:57 ../image.php:48
+msgid "Pages:"
+msgstr "Pages:"
+
+#: ../content-resume.php:59 ../content.php:69
 msgid "Comment"
 msgstr "Commentaire"
 
-#: ../content-resume.php:59 ../content.php:58
+#: ../content-resume.php:59 ../content.php:69
 msgid "One comment"
 msgstr "Un commentaire"
 
-#: ../content-resume.php:59 ../content.php:58
+#: ../content-resume.php:59 ../content.php:69
 #, php-format
 msgid "See % comments"
 msgstr "Voir % commentaires"
@@ -113,43 +130,35 @@ msgstr "Voir % commentaires"
 msgid "Read more <span class=\"meta-nav\">&rarr;</span>"
 msgstr "Lire la suite <span class=\"meta-nav\">&rarr;</span>"
 
-#: ../functions.php:58
+#: ../functions.php:62
 msgid "Main menu"
 msgstr "Menu principal"
 
-#: ../functions.php:129
+#: ../functions.php:180
 msgid "Sidebar"
 msgstr "Sidebar"
 
-#: ../functions.php:131
+#: ../functions.php:182
 msgid "Shown in your site"
 msgstr "Affiché dans votre site"
 
-#: ../functions.php:183
+#: ../functions.php:234
 msgid "Sticky"
 msgstr "Autocollant"
 
-#: ../functions.php:189 ../functions.php:195
+#: ../functions.php:240 ../functions.php:246
 msgid ", "
 msgstr ", "
 
-#: ../functions.php:204
+#: ../functions.php:255
 #, php-format
 msgid "View all posts by %s"
 msgstr "Voir tous les articles de %s"
 
-#: ../functions.php:226
+#: ../functions.php:277
 #, php-format
 msgid "Permalink to %s"
 msgstr "Lien vers %s"
-
-#: ../image.php:48
-msgid "Pages:"
-msgstr "Pages:"
-
-#: ../image.php:52
-msgid "Page"
-msgstr "Page"
 
 #: ../search.php:22
 #, php-format
